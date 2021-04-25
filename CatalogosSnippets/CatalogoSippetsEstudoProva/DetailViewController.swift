@@ -10,15 +10,15 @@ import Sourceful
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var textView: SyntaxTextView!
-
+    
     var isSwiftLexer = true
-
+    
     var snippet: Snippet? {
         didSet {
             refreshUI()
         }
     }
-        
+    
     var menuItems: [UIAction] {
         return [
             UIAction(title: "Swift") { (action) in
@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
             }
         ]
     }
-
+    
     var showMenu: UIMenu {
         return UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
     }
@@ -49,20 +49,20 @@ class DetailViewController: UIViewController {
             return LightTheme()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         textView.theme = sourceCodeTheme
         textView.delegate = self
-
+        
         // Attach a toolbar with common key symbols to make typing easier.
         textView.contentTextView.inputAccessoryView = UIView.editingToolbar(target: self, action: #selector(insertCharacter))
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Language", image: nil, primaryAction: nil, menu: showMenu)
     }
-
+    
     /// Called when the user taps a key symbol in our input accessory view.
     @objc func insertCharacter(_ sender: UIBarButtonItem) {
         guard let value = UnicodeScalar(sender.tag) else { return }
@@ -82,8 +82,3 @@ extension DetailViewController: SyntaxTextViewDelegate {
         }
     }
 }
-
-// bem bem antes
-
-
-//aquiiiiii ok

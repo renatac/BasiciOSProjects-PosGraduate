@@ -43,31 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         supplementaryTableViewController.delegate = masterTableViewController as TagSelectionDelegate
         masterTableViewController.delegate = detailViewController as SnippetSelectionDelegate
         masterTableViewController.delegat = supplementaryTableViewController as TagSnippetInsertDelegate
-        
-        //guard
-//            let leftNavController = splitViewController.viewControllers.first
-//                as? UINavigationController,
-//            let masterViewController = leftNavController.viewControllers.first
-//                as? MasterTableViewController,
-//            let detailNavViewController = splitViewController.viewControllers.last
-//                as? UINavigationController,
-//            let detailViewController = detailNavViewController.viewControllers.first
-//                as? DetailViewController
-//        else { fatalError() }
-
-        
-//        let firstSnippet = supplementaryTableViewController.snippets.first
-//        detailViewController.snippet = masterViewController.snippets.first = detailViewController.snippet = firstSnippet
-//
-//
-//        supplementaryTableViewController.snippets.first
-        
-//        let firstSnippet = supplementaryTableViewController.tags.first
-//        let secondSnippet = masterTableViewController.snippets.first
-//        detailViewController.snippet = secondSnippet
-//        supplementaryTableViewController.delegate = masterTableViewController as TagSelectionDelegate
-//        masterTableViewController.delegate = detailViewController as SnippetSelectionDelegate
-    }
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

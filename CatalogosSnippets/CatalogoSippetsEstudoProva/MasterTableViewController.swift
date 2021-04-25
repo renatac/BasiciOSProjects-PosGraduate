@@ -19,7 +19,7 @@ class MasterTableViewController: UITableViewController {
     
     weak var delegate: SnippetSelectionDelegate?
     weak var delegat: TagSnippetInsertDelegate?
-
+    
     var tag: Tag? {
         didSet {
             refreshUI()
@@ -31,33 +31,33 @@ class MasterTableViewController: UITableViewController {
         title = tag?.tagName ?? "New Snippet"
         tableView.reloadData()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
     }
-
+    
     override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int)
     -> Int {
         (tag?.snippets.count)!
     }
- 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         title = tag?.tagName ?? "New Snippet"
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
+        
         cell.textLabel?.text = tag?.snippets[indexPath.row].name
-
+        
         return cell
     }
     
-
+    
     @IBAction func addNewSnippet(_ sender: Any) {
-       tag?.snippets.insert(Snippet(name:"Novo Snippet", content:""), at: 0)
+        tag?.snippets.insert(Snippet(name:"Novo Snippet", content:""), at: 0)
         delegat?.tagSnippetInserted(tag!.tagName)
         tableView.reloadData()
     }
@@ -68,7 +68,7 @@ class MasterTableViewController: UITableViewController {
         
         let selectedSnippet = tag?.snippets[indexPath.row]
         delegate?.snippetSelected(selectedSnippet!)
-
+        
         if (delegate as? DetailViewController) != nil {
             splitViewController?.show(.secondary)
         }
@@ -83,7 +83,7 @@ extension DetailViewController: SnippetSelectionDelegate {
 
 extension SupplementaryTableViewController: TagSnippetInsertDelegate {
     func tagSnippetInserted(_ tagName: String) {
-
+        
         var index = 0
         tags.forEach { tag in
             if(tag.tagName == tagName) {
